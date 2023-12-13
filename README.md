@@ -15,7 +15,8 @@ Inside the `python` folder, you can find a number of files:
 ### Testing your code (Python)
 
 * Fill in the functions in `template.py`.
-* Run: `python3 testingFramework.py template.py`.
+* Run: 
+    ```python3 testingFramework.py template.py```
 * Review the output to verify which tests have been passed and which have been failed.
 
 

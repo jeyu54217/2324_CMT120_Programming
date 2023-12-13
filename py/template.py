@@ -67,14 +67,16 @@ def exercise3(l: list) -> list:
 
     Returns:
         list: A list of all possible sublists.
+    Notes:
+        sublists = [[]]
+        for i in range(len(l)):
+            for j in range(i + 1, len(l) + 1):
+                # Slice the input list to get the sublist
+                sublist = l[i:j]
+                sublists.append(sublist)
     """
-    sublists = [[]]
-    for i in range(len(l)):
-        for j in range(i + 1, len(l) + 1):
-            # Slice the input list to get the sublist
-            sublist = l[i:j]
-            sublists.append(sublist)
-    return sublists
+    sublists = [[]] + [l[i:j] for i in range(len(l)) for j in range(i + 1, len(l) + 1)]
+    return  sublists
 
 # Exercise 4 - English to Pig Latin Translator
 def exercise4(word: str) -> str:
