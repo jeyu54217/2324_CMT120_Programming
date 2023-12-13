@@ -11,9 +11,8 @@ def exercise1(num: int,
         
     Returns:
         tuple: A tuple containing the reduced numerator and denominator.
-    
     Notes:
-        1. Euclidean algorithm : function to find the Greatest Common Divisor (GCD)
+        - Euclidean algorithm : function to find the Greatest Common Divisor (GCD)
             def gcd(a, b):
                 while b != 0:
                     a, b = b, a % b
@@ -28,17 +27,17 @@ def exercise1(num: int,
     else:
         # Calculating GCD for the numerator and denominator
         divisor = gcd(num, den)
-
+        
         # Reducing the fraction
         reduced_num, reduced_den = num // divisor, den // divisor
-
         return reduced_num, reduced_den
 
 # Exercise 2 - Magical Dates
 def exercise2(day: int, month: int, year: int) -> bool:
     """
     Check if a given date multiplied by the month equals the last two digits of the year.
-
+    Rules:
+        - The day, month, and year must be positive integers.
     Parameters:
         day (int): The day of the date.
         month (int): The month of the date.
@@ -56,11 +55,11 @@ def exercise2(day: int, month: int, year: int) -> bool:
 def exercise3(l: list) -> list:
     """
     Generate all possible sublists of a given list.
-        The order of the elements of the list returned is not important.
-        The order of the elements inside of each list should reflect the order in the original list.
-        Examples:
-            exercise3([1,2,3,4]) returns
-            [[1],[2],[3],[4],[1,2],[2,3],[3,4],[1,2,3],[2,3,4]]
+    
+    Rules:
+        - The order of the elements of the list returned is not important.
+        - The order of the elements inside of each list should reflect the order in the original list.
+        - Examples: exercise3([1,2,3,4]) returns [[1],[2],[3],[4],[1,2],[2,3],[3,4],[1,2,3],[2,3,4]]
 
     Parameters:
         l (list): The list from which sublists are to be generated.
@@ -68,19 +67,19 @@ def exercise3(l: list) -> list:
     Returns:
         list: A list of all possible sublists.
     Notes:
-        sublists = [[]]
-        for i in range(len(l)):
-            for j in range(i + 1, len(l) + 1):
-                # Slice the input list to get the sublist
-                sublist = l[i:j]
-                sublists.append(sublist)
+        - Regular Solution:
+            sublists = [[]]
+            for i in range(len(l)):
+                for j in range(i + 1, len(l) + 1):
+                    # Slice the input list to get the sublist
+                    sublist = l[i:j]
+                    sublists.append(sublist)
     """
     sublists = [[]] + [l[i:j] for i in range(len(l)) for j in range(i + 1, len(l) + 1)]
     return  sublists
 
 # Exercise 4 - English to Pig Latin Translator
 def exercise4(word: str) -> str:
-
     """
     Translate an English word to Pig Latin.
 
@@ -90,14 +89,14 @@ def exercise4(word: str) -> str:
     - Handle uppercase letters and punctuation.
 
     Parameters:
-    word (str): The English word to translate.
+        word (str): The English word to translate.
 
     Returns:
-    str: The translated Pig Latin word.
+        str: The translated Pig Latin word.
     """
     # Check if the word is empty
     if not word:
-        return word
+        return word 
 
     # Check for punctuation at the end
     punctuation = ''
