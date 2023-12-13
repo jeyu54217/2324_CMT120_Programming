@@ -6,17 +6,22 @@ def exercise1(num: int,
     Reduces a fraction to its lowest terms and returns the numerator and denominator.
 
     Parameters:
-    numerator (int): The numerator of the fraction.
-    denominator (int): The denominator of the fraction.
-
+        num (int): The numerator of the fraction.
+        den (int): The denominator of the fraction.
+        
     Returns:
-    (int, int): A tuple containing the numerator and denominator of the reduced fraction.
+        tuple: A tuple containing the reduced numerator and denominator.
+    
+    Notes:
+        1. Euclidean algorithm : function to find the Greatest Common Divisor (GCD)
+            def gcd(a, b):
+                while b != 0:
+                    a, b = b, a % b
+                return a
     """
-    # Function to find the Greatest Common Divisor (GCD)
-    def gcd(a, b):
-        while b != 0:
-            a, b = b, a % b
-        return a
+    # Euclidean algorithm : function to find the Greatest Common Divisor (GCD)
+    gcd = lambda a, b: a if b == 0 else gcd(b, a % b)
+    
     # Check if the inputs are positive integers
     if num <= 0 or den <= 0:
         raise ValueError("Both numerator and denominator must be positive integers.")
@@ -25,47 +30,43 @@ def exercise1(num: int,
         divisor = gcd(num, den)
 
         # Reducing the fraction
-        reduced_num = num // divisor
-        reduced_den = den // divisor
+        reduced_num, reduced_den = num // divisor, den // divisor
 
         return reduced_num, reduced_den
 
 # Exercise 2 - Magical Dates
-def exercise2(day: int, 
-              month: int,
-              year: int) -> bool:
+def exercise2(day: int, month: int, year: int) -> bool:
     """
-    Check if a given date is a magic date.
-    A magic date occurs when the day multiplied by the month equals the last two digits of the year.
+    Check if a given date multiplied by the month equals the last two digits of the year.
 
     Parameters:
-    day (int): The day of the date.
-    month (int): The month of the date.
-    year (int): The year of the date.
+        day (int): The day of the date.
+        month (int): The month of the date.
+        year (int): The year of the date.
 
     Returns:
-    bool: True if the date is a magic date, False otherwise.
+        bool: True if the date is a magic date, False otherwise.
     """
-    # Multiply day and month
-    product = day * month
-
-    # Get last two digits of the year
-    last_two_digits = year % 100
-
-    # Check if product equals the last two digits of the year
-    return product == last_two_digits
-
+    if day <= 0 | day > 31 | month <= 0 | month > 12 | year <= 0: 
+        raise ValueError("Invalid date.")
+    else: 
+        return day * month == year % 100
 
 # Exercise 3 - All Sublists
 def exercise3(l: list) -> list:
     """
     Generate all possible sublists of a given list.
+        The order of the elements of the list returned is not important.
+        The order of the elements inside of each list should reflect the order in the original list.
+        Examples:
+            exercise3([1,2,3,4]) returns
+            [[1],[2],[3],[4],[1,2],[2,3],[3,4],[1,2,3],[2,3,4]]
 
     Parameters:
-    input_list (list): The list from which sublists are to be generated.
+        l (list): The list from which sublists are to be generated.
 
     Returns:
-    list: A list of all possible sublists.
+        list: A list of all possible sublists.
     """
     sublists = [[]]
     for i in range(len(l)):
